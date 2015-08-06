@@ -11,6 +11,8 @@
 		13D7859A1B73D0C000EFFB33 /* zip3.shp in Resources */ = {isa = PBXBuildFile; fileRef = 13D785971B73D0C000EFFB33 /* zip3.shp */; };
 		13D7859B1B73D0C000EFFB33 /* zip3.shx in Resources */ = {isa = PBXBuildFile; fileRef = 13D785981B73D0C000EFFB33 /* zip3.shx */; };
 		13D785A51B74032D00EFFB33 /* zip3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13D785A41B74032D00EFFB33 /* zip3.plist */; };
+		13D785A71B74056C00EFFB33 /* pa_zip3_counts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13D785A61B74056C00EFFB33 /* pa_zip3_counts.plist */; };
+		13D785AA1B7405D500EFFB33 /* CMADataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D785A91B7405D500EFFB33 /* CMADataManager.m */; };
 		1D3623260D0F684500981E51 /* TestObjCShapefileAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* TestObjCShapefileAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -30,6 +32,9 @@
 		13D785971B73D0C000EFFB33 /* zip3.shp */ = {isa = PBXFileReference; lastKnownFileType = file; name = zip3.shp; path = ZIP3/zip3.shp; sourceTree = "<group>"; };
 		13D785981B73D0C000EFFB33 /* zip3.shx */ = {isa = PBXFileReference; lastKnownFileType = file; name = zip3.shx; path = ZIP3/zip3.shx; sourceTree = "<group>"; };
 		13D785A41B74032D00EFFB33 /* zip3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = zip3.plist; path = ZIP3/zip3.plist; sourceTree = "<group>"; };
+		13D785A61B74056C00EFFB33 /* pa_zip3_counts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pa_zip3_counts.plist; sourceTree = "<group>"; };
+		13D785A81B7405D500EFFB33 /* CMADataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMADataManager.h; sourceTree = "<group>"; };
+		13D785A91B7405D500EFFB33 /* CMADataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMADataManager.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* TestObjCShapefileAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjCShapefileAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* TestObjCShapefileAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjCShapefileAppDelegate.m; sourceTree = "<group>"; };
@@ -137,6 +142,9 @@
 		37AB235616D7CF5D00A113D0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				13D785A81B7405D500EFFB33 /* CMADataManager.h */,
+				13D785A91B7405D500EFFB33 /* CMADataManager.m */,
+				13D785A61B74056C00EFFB33 /* pa_zip3_counts.plist */,
 				13D785951B73D0B500EFFB33 /* Zip3 */,
 			);
 			path = Data;
@@ -200,6 +208,7 @@
 				2899E5220DE3E06400AC0155 /* TestObjCShapefileViewController.xib in Resources */,
 				13D785991B73D0C000EFFB33 /* zip3.dbf in Resources */,
 				13D7859A1B73D0C000EFFB33 /* zip3.shp in Resources */,
+				13D785A71B74056C00EFFB33 /* pa_zip3_counts.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +224,7 @@
 				28D7ACF80DDB3853001CB0EB /* TestObjCShapefileViewController.m in Sources */,
 				37A3905D125A400A00DD86BC /* ShapePolyline.m in Sources */,
 				37A3905E125A400A00DD86BC /* Shapefile.m in Sources */,
+				13D785AA1B7405D500EFFB33 /* CMADataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

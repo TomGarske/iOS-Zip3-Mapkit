@@ -2,6 +2,7 @@
 #import "TestObjCShapefileViewController.h"
 #import "Shapefile.h"
 #import "ShapePolyline.h"
+#import "CMADataManager.h"
 
 @implementation TestObjCShapefileViewController
 @synthesize mapView;
@@ -52,11 +53,20 @@ static MKCoordinateSpan kStandardZoomSpan = {2.f, 2.f};
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay{
 	if ([overlay isKindOfClass:[MKPolygon class]]){
 		MKPolygonView* aView = [[[MKPolygonView alloc] initWithPolygon:(MKPolygon*)overlay] autorelease];
-
-        UIColor* color =  [self getColorForZip:@""];
-		aView.fillColor = [color colorWithAlphaComponent:.2];
-        aView.strokeColor = [[UIColor blackColor] colorWithAlphaComponent:.7];
-        aView.lineWidth = 1;
+        
+        NSInteger ind = [((MKPolygon*)overlay).title integerValue];
+        NSString* zip = [[CMADataManager sharedInstance] getZipCodeForIndex:ind-1];
+        
+        if(![[CMADataManager sharedInstance] getIsVisibleForZip:zip]){
+            aView.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0];
+            aView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0];
+            aView.lineWidth = 1;
+        }else{
+            UIColor* color =  [self getColorForZip:zip];
+            aView.fillColor = [color colorWithAlphaComponent:.2];
+            aView.strokeColor = [[UIColor blackColor] colorWithAlphaComponent:.7];
+            aView.lineWidth = 1;
+        }
         return aView;
     }
     return nil;
