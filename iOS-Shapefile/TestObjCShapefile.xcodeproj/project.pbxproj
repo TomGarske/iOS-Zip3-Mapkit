@@ -35,10 +35,10 @@
 		13D785A61B74056C00EFFB33 /* pa_zip3_counts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pa_zip3_counts.plist; sourceTree = "<group>"; };
 		13D785A81B7405D500EFFB33 /* CMADataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMADataManager.h; sourceTree = "<group>"; };
 		13D785A91B7405D500EFFB33 /* CMADataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMADataManager.m; sourceTree = "<group>"; };
+		13D785AB1B740CCF00EFFB33 /* TestObjCShapefile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestObjCShapefile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* TestObjCShapefileAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjCShapefileAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* TestObjCShapefileAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjCShapefileAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* TestObjCShapefile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TestObjCShapefile.app; path = "/Users/tomgarske/Development/iOS-Zip3-Mapkit/iOS-Shapefile/build/Debug-iphoneos/TestObjCShapefile.app"; sourceTree = "<absolute>"; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* TestObjCShapefileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestObjCShapefileViewController.xib; sourceTree = "<group>"; };
@@ -97,6 +97,14 @@
 			name = Zip3;
 			sourceTree = "<group>";
 		};
+		13D785AC1B740CCF00EFFB33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13D785AB1B740CCF00EFFB33 /* TestObjCShapefile.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +112,7 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				13D785AC1B740CCF00EFFB33 /* Products */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -167,7 +176,7 @@
 			);
 			name = TestObjCShapefile;
 			productName = TestObjCShapefile;
-			productReference = 1D6058910D05DD3D006BFB54 /* TestObjCShapefile.app */;
+			productReference = 13D785AB1B740CCF00EFFB33 /* TestObjCShapefile.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -177,6 +186,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = ZKW5CF92S4;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TestObjCShapefile" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -189,6 +203,7 @@
 				German,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			productRefGroup = 13D785AC1B740CCF00EFFB33 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
