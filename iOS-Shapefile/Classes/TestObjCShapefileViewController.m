@@ -52,8 +52,7 @@ static MKCoordinateSpan kStandardZoomSpan = {2.f, 2.f};
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay{
 	if ([overlay isKindOfClass:[MKPolygon class]]){
 		MKPolygonView* aView = [[[MKPolygonView alloc] initWithPolygon:(MKPolygon*)overlay] autorelease];
-        NSLog(@"%@",((MKPolygon*)overlay).title);
-        // Get Color Segment Here
+
         UIColor* color =  [self getColorForZip:@""];
 		aView.fillColor = [color colorWithAlphaComponent:.2];
         aView.strokeColor = [[UIColor blackColor] colorWithAlphaComponent:.7];
