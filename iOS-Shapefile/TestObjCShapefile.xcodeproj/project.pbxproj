@@ -18,30 +18,12 @@
 		2899E5220DE3E06400AC0155 /* TestObjCShapefileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* TestObjCShapefileViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* TestObjCShapefileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* TestObjCShapefileViewController.m */; };
-		374F8D8F1375EEEC00DAABE3 /* libProj_4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 374F8D8E1375EEE400DAABE3 /* libProj_4.a */; };
 		37A3905C125A400A00DD86BC /* PointLong.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A39054125A400A00DD86BC /* PointLong.m */; };
 		37A3905D125A400A00DD86BC /* ShapePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A39056125A400A00DD86BC /* ShapePolyline.m */; };
 		37A3905E125A400A00DD86BC /* Shapefile.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A39058125A400A00DD86BC /* Shapefile.m */; };
 		37EC6E73125AA318009B360D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EC6E72125AA318009B360D /* CoreLocation.framework */; };
 		37EC6E77125AA322009B360D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EC6E76125AA322009B360D /* MapKit.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		374F8D8D1375EEE400DAABE3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 374F8D861375EEE400DAABE3 /* Proj.4.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = Proj.4;
-		};
-		374F8D9D1375EF2300DAABE3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 374F8D861375EEE400DAABE3 /* Proj.4.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = Proj.4;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		13D785961B73D0C000EFFB33 /* zip3.dbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = zip3.dbf; path = ZIP3/zip3.dbf; sourceTree = "<group>"; };
@@ -58,7 +40,6 @@
 		28D7ACF60DDB3853001CB0EB /* TestObjCShapefileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjCShapefileViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* TestObjCShapefileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjCShapefileViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		374F8D861375EEE400DAABE3 /* Proj.4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Proj.4.xcodeproj; path = Frameworks/Proj.4/Proj.4.xcodeproj; sourceTree = "<group>"; };
 		37A39053125A400A00DD86BC /* PointLong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointLong.h; path = Classes/PointLong.h; sourceTree = SOURCE_ROOT; };
 		37A39054125A400A00DD86BC /* PointLong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PointLong.m; path = Classes/PointLong.m; sourceTree = SOURCE_ROOT; };
 		37A39055125A400A00DD86BC /* ShapePolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShapePolyline.h; path = Classes/ShapePolyline.h; sourceTree = SOURCE_ROOT; };
@@ -80,7 +61,6 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				37EC6E73125AA318009B360D /* CoreLocation.framework in Frameworks */,
 				37EC6E77125AA322009B360D /* MapKit.framework in Frameworks */,
-				374F8D8F1375EEEC00DAABE3 /* libProj_4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +136,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				374F8D861375EEE400DAABE3 /* Proj.4.xcodeproj */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -164,14 +143,6 @@
 				37EC6E76125AA322009B360D /* MapKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		374F8D871375EEE400DAABE3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				374F8D8E1375EEE400DAABE3 /* libProj_4.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		37AB235616D7CF5D00A113D0 /* Data */ = {
@@ -196,7 +167,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				374F8D9E1375EF2300DAABE3 /* PBXTargetDependency */,
 			);
 			name = TestObjCShapefile;
 			productName = TestObjCShapefile;
@@ -223,28 +193,12 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 374F8D871375EEE400DAABE3 /* Products */;
-					ProjectRef = 374F8D861375EEE400DAABE3 /* Proj.4.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* TestObjCShapefile */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		374F8D8E1375EEE400DAABE3 /* libProj_4.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libProj_4.a;
-			remoteRef = 374F8D8D1375EEE400DAABE3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -276,14 +230,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		374F8D9E1375EF2300DAABE3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Proj.4;
-			targetProxy = 374F8D9D1375EF2300DAABE3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {

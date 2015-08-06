@@ -1,21 +1,3 @@
-//=============================================================================
-// Copyright (c) 2004-2009 Pascal Brandt - All Rights Reserved
-//=============================================================================
-// Name:    "Shapefile.h"
-// ----------------------------------------------------------------------------
-// Purpose: ...
-//          -------------------------------------------------------------------
-// Usage:   ...
-//          -------------------------------------------------------------------
-// Remarks: ...
-// ----------------------------------------------------------------------------
-// Created: 20040709@000 BRA
-// ----------------------------------------------------------------------------
-// Changes: ...
-//          -------------------------------------------------------------------
-//
-//=============================================================================
-
 #import <Foundation/Foundation.h>
 
 enum ShapeTypes {
@@ -54,9 +36,7 @@ enum ShapeTypes {
 	NSData *m_data;
 	
 @public
-	
 	NSMutableArray *m_objList;
-	
 }
 
 @property (readwrite) double extendLeft;
@@ -68,7 +48,7 @@ enum ShapeTypes {
 @property (readwrite) long shapefileType;
 @property (nonatomic, readonly) NSArray *objects;
 
--(BOOL)loadShapefile:(NSString *)strShapefile withProjection:(NSString *)projection;
+-(BOOL)loadShapefile:(NSString *)strShapefile;
 -(NSString *)shapefileTypeAsString;
 
 @end

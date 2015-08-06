@@ -1,23 +1,4 @@
-//=============================================================================
-// Copyright (c) 2004-2009 Pascal Brandt - All Rights Reserved
-//=============================================================================
-// Name:    "Shapefile.m"
-// ----------------------------------------------------------------------------
-// Purpose: ...
-//          -------------------------------------------------------------------
-// Usage:   ...
-//          -------------------------------------------------------------------
-// Remarks: ...
-// ----------------------------------------------------------------------------
-// Created: 20040709@000 BRA
-// ----------------------------------------------------------------------------
-// Changes: ...
-//          -------------------------------------------------------------------
-//
-//=============================================================================
-
 #import <CoreLocation/CoreLocation.h>
-#import "proj_api.h"
 #import <MapKit/MapKit.h>
 
 #import "Shapefile.h"
@@ -26,8 +7,8 @@
 #import "PointLong.h"
 
 @interface Shapefile ()
--(void *)parsePolyline:(void *)pMain withProjection:(NSString *)projection;
--(void *)parsePoint:(void *)pMain withProjection:(NSString *)projection;
+-(void *)parsePolyline:(void *)pMain;
+-(void *)parsePoint:(void *)pMain;
 @end
 
 @implementation Shapefile
@@ -152,7 +133,7 @@ long convertToLittleEndianLong(long Val)
 }
 
 
--(BOOL)loadShapefile:(NSString *)strShapefile withProjection:(NSString *)projection;
+-(BOOL)loadShapefile:(NSString *)strShapefile;
 {
 	
 	//NSLog(@"long = %d, double = %d NSInteger = %d", sizeof(long), sizeof(double), sizeof(NSInteger));
@@ -223,9 +204,7 @@ long convertToLittleEndianLong(long Val)
 	memcpy(&extendTop, pMain, 8);
 	pMain = (void*) ((unsigned long) pMain + 40);
 	
-	while(nTotalContentLength <= fileLength)
-//#warning test
-	{
+	while(nTotalContentLength <= fileLength){
 		
 		memcpy(&nRecord, pMain, 4);
 		recordCount = convertToLittleEndianLong(nRecord);
@@ -241,16 +220,13 @@ long convertToLittleEndianLong(long Val)
 		pMain = (void*) ((unsigned long) pMain + 4);
 		
 		if(nShapefileType == kShapeTypePoint)
-			pMain = [self parsePoint:pMain withProjection:projection];
+			pMain = [self parsePoint:pMain];
 		
 		if((nShapefileType == kShapeTypePolyline) || (nShapefileType == kShapeTypePolygon))
-			pMain = [self parsePolyline:pMain withProjection:projection];
+			pMain = [self parsePolyline:pMain];
 		
-		if(nTotalContentLength == fileLength)
-		{
-			
+		if(nTotalContentLength == fileLength){
 			return YES;
-			
 		}
 		
 	}
@@ -263,34 +239,17 @@ long convertToLittleEndianLong(long Val)
 	return m_objList;
 }
 
-
 #define NAD83 "+proj=longlat +ellps=GRS80 +datum=NAD83 +no_defs"
 #define WGS1984 "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 #define DEST_PROJECTION WGS1984
 
--(void *)parsePoint:(void *)pMain withProjection:(NSString *)projection
+-(void *)parsePoint:(void *)pMain
 {
 	double nEast = 0, nNorth = 0;
 	
 	memcpy(&nEast,  (void*) ((unsigned long) pMain), 8);		// east
 	memcpy(&nNorth, (void*) ((unsigned long) pMain + 8), 8);	// north
 
-
-    if (projection) {
-        const char *src_projection = [projection cStringUsingEncoding:NSUTF8StringEncoding];
-
-        projPJ src_prj = nil, dest_prj = nil;
-        if (!(src_prj = pj_init_plus(src_projection)) )
-            exit(1);
-        if (!(dest_prj = pj_init_plus(DEST_PROJECTION)) )
-            exit(1);
-
-        pj_transform(src_prj, dest_prj, 1, 1, &nEast, &nNorth, NULL );
-        nEast *= RAD_TO_DEG;
-        nNorth *= RAD_TO_DEG;
-
-    }
-    	
 	CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(nNorth, nEast);
 		
 	MKPlacemark *place = [[MKPlacemark alloc] initWithCoordinate:coords addressDictionary:nil];
@@ -300,13 +259,10 @@ long convertToLittleEndianLong(long Val)
 	pMain = (void*) ((unsigned long) pMain + 16);
 	
 	return pMain;
-	
 }
 
 
--(void *)parsePolyline:(void *)pMain withProjection:(NSString *)projection
-{
-	
+-(void *)parsePolyline:(void *)pMain{	
 	long i;
 	long nNumParts;
 	long nNumPoints;
@@ -342,17 +298,6 @@ long convertToLittleEndianLong(long Val)
 	
 	CLLocationCoordinate2D *pointsCArray = calloc(nNumPoints, sizeof(CLLocationCoordinate2D));
 
-    projPJ src_proj = nil, dest_proj = nil;
-
-    if (projection) {
-        const char *src_projection = [projection cStringUsingEncoding:NSUTF8StringEncoding];
-
-        if (!(src_proj = pj_init_plus(src_projection)) )
-            exit(1);
-        if (!(dest_proj = pj_init_plus(DEST_PROJECTION)) )
-            exit(1);
-    }
-
 	// read the elements
 	
 	for(NSInteger index = 0; index < nNumPoints; index++)
@@ -363,27 +308,11 @@ long convertToLittleEndianLong(long Val)
 		memcpy(&north, (void*) (unsigned long) pMain, 8);
 		pMain = (void*) ((unsigned long) pMain + 8);
 
-        if (src_proj && dest_proj) {
-            pj_transform(src_proj, dest_proj, 1, 1, &east, &north, NULL );
-            east *= RAD_TO_DEG;
-            north *= RAD_TO_DEG;
-        }
-
 		pointsCArray[index] = CLLocationCoordinate2DMake(north, east);
 	}
-		
-	//NSData *coordinatesData = [NSData dataWithBytes:(const void *)pointsCArray 
-	//									  length:nNumPoints*sizeof(CLLocationCoordinate2D)];
 
-	//MKPolygon *polygon=[MKPolygon polygonWithCoordinates:(CLLocationCoordinate2D *)[coordinatesData bytes] 
-	//											   count:nNumPoints];
 	MKPolygon *polygon=[MKPolygon polygonWithCoordinates:pointsCArray 
 												   count:nNumPoints];
-	//polygon.title = @"Title";
-	//polygon.subtitle = @"Subtitle";
-	
-	
-//---------------------------------	
 	
 	if (pointsCArray) {
 		free(pointsCArray);
@@ -392,10 +321,7 @@ long convertToLittleEndianLong(long Val)
 	
 	[m_objList addObject:polygon];
 	
-	//pMain = (void*) ((unsigned long) pMain + (4 * nNumParts) + (16 * nNumPoints));
-	
 	return pMain;
-	
 }
 
 @end

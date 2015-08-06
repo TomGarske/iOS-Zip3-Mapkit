@@ -28,13 +28,11 @@ static MKCoordinateSpan kStandardZoomSpan = {2.f, 2.f};
 	[self openShapefile:shapePath];
 }
 
-- (void)animateToState
-{    
+- (void)animateToState{
     [self.mapView setRegion:MAP_REGION animated:YES];
 }
 
-- (void)animateToAnnotation:(id<MKAnnotation>)annotation
-{
+- (void)animateToAnnotation:(id<MKAnnotation>)annotation{
 	if (!annotation)
 		return;
 	
@@ -43,7 +41,7 @@ static MKCoordinateSpan kStandardZoomSpan = {2.f, 2.f};
 }
 
 - (void)moveMapToAnnotation:(id<MKAnnotation>)annotation {
-	if (![self region:self.mapView.region isEqualTo:MAP_REGION]) { // it's another region, let's zoom out/in
+	if (![self region:self.mapView.region isEqualTo:MAP_REGION]) {
 		[self performSelector:@selector(animateToState) withObject:nil afterDelay:0.3];
 		[self performSelector:@selector(animateToAnnotation:) withObject:annotation afterDelay:1.7];        
 	}
@@ -51,33 +49,42 @@ static MKCoordinateSpan kStandardZoomSpan = {2.f, 2.f};
 		[self performSelector:@selector(animateToAnnotation:) withObject:annotation afterDelay:0.7];	
 }
 
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
-
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay{
-	
 	if ([overlay isKindOfClass:[MKPolygon class]]){
-		UIColor *myColor = [UIColor redColor];
-		
-		MKPolygonView*    aView = [[[MKPolygonView alloc] initWithPolygon:(MKPolygon*)overlay] autorelease];		
-		aView.fillColor = [myColor colorWithAlphaComponent:0.2];
-        aView.strokeColor = [myColor colorWithAlphaComponent:0.7];
-        aView.lineWidth = 2;
+		MKPolygonView* aView = [[[MKPolygonView alloc] initWithPolygon:(MKPolygon*)overlay] autorelease];
+        
+        // Get Color Segment Here
+        UIColor* color =  [self getColorForZip:@""];
+		aView.fillColor = [color colorWithAlphaComponent:.2];
+        aView.strokeColor = [[UIColor blackColor] colorWithAlphaComponent:.7];
+        aView.lineWidth = 1;
         return aView;
     }
     return nil;
 }
 
+-(UIColor *)getColorForZip:(NSString*)key
+{
+    UIColor* color = [UIColor redColor];
+    if([self getYesOrNo])
+        color = [UIColor greenColor];
+    return color;
+}
+
+-(BOOL) getYesOrNo
+{
+    int tmp = (arc4random() % 30)+1;
+    if(tmp % 5 == 0)
+        return YES;
+    return NO;
+}
+
 -(void)openShapefile:(NSString *)strShapefile
 {
 	Shapefile *shapefile = [[Shapefile alloc] init];
-
-	BOOL bLoad = [shapefile loadShapefile:strShapefile withProjection:nil];
+	BOOL bLoad = [shapefile loadShapefile:strShapefile];
 	
-	if(bLoad)
-	{
+	if(bLoad){
 		long nShapefileType = [shapefile shapefileType];
 		
 		if(nShapefileType == kShapeTypePoint)
@@ -87,10 +94,7 @@ static MKCoordinateSpan kStandardZoomSpan = {2.f, 2.f};
 			[self.mapView addOverlays:shapefile.objects];
 		
 		[self.mapView setNeedsDisplay];
-	}
-	
-	else
-	{
+	}else{
 		[shapefile release];
 	}
 }
