@@ -5,7 +5,7 @@
 #import "ShapePolyline.h"
 
 @interface Shapefile ()
--(void *)parsePolyline:(void *)pMain;
+-(void *)parsePolyline:(void *)pMain forRecord:(int)record;
 -(void *)parsePoint:(void *)pMain;
 @end
 
@@ -25,11 +25,8 @@
 	[super dealloc];
 }
 
--(NSString *)shapefileTypeAsString
-{
-	
+-(NSString *)shapefileTypeAsString{
 	NSString* strShapefileType;
-	
 	switch(shapefileType)
 	{
 		
@@ -95,15 +92,11 @@
 			break;
 	
 	}
-	
 	return strShapefileType;
-	
 }
 
 
-int convertToLittleEndianInteger(void* pVal)
-{
-	
+int convertToLittleEndianInteger(void* pVal){
 	int dwResult;
 	
 	memcpy((void*) ((unsigned long) &dwResult), (void*) ((unsigned long) pVal + 3), 1);
@@ -112,7 +105,6 @@ int convertToLittleEndianInteger(void* pVal)
 	memcpy((void*) ((unsigned long) &dwResult + 3), (void*) ((unsigned long) pVal), 1);
 	
 	return dwResult;
-	
 }
 
 
@@ -130,12 +122,8 @@ long convertToLittleEndianLong(long Val)
 	
 }
 
-
--(BOOL)loadShapefile:(NSString *)strShapefile;
+-(BOOL)loadShapefile:(NSString *)strShapefile
 {
-	
-	//NSLog(@"long = %d, double = %d NSInteger = %d", sizeof(long), sizeof(double), sizeof(NSInteger));
-	
 	if (m_objList)
 		[m_objList release];
 
@@ -147,7 +135,6 @@ long convertToLittleEndianLong(long Val)
 	long     nTotalContentLength = 100;
 	long	 nContentLength = 0;
 	
-	
 	m_strShapefile = strShapefile;
 	m_data = [NSData dataWithContentsOfFile:m_strShapefile];
 	
@@ -157,8 +144,7 @@ long convertToLittleEndianLong(long Val)
 	pMain = &pBufferShapefile[0];
 	
 	// magic number of header block does not match (9994)
-	if(convertToLittleEndianInteger(pMain) != 0x270a)
-	{
+	if(convertToLittleEndianInteger(pMain) != 0x270a){
 		return NO;
 	}
 	
@@ -171,8 +157,7 @@ long convertToLittleEndianLong(long Val)
 	memcpy(&m_nVersion, pMain, 4);
 	
 	// version number should match (1000)
-	if(m_nVersion != 0x03e8)
-	{
+	if(m_nVersion != 0x03e8){
 		return NO;
 	}
 	
@@ -180,15 +165,6 @@ long convertToLittleEndianLong(long Val)
 	pMain = (void*) ((unsigned long) pMain + 4);
 	memcpy(&nShapefileType, pMain, 4);
 	shapefileType = nShapefileType;
-	
-	if(nShapefileType != kShapeTypePoint && nShapefileType != kShapeTypePolyline && nShapefileType != kShapeTypePolygon)
-	{
-		
-		//NSRunAlertPanel(@"ShpViewer", @"Shapetype %d not yet supported!", @"OK", nil, nil, nShapefileType);
-		NSLog(@"Shapetype %@ not yet supported!", [self shapefileTypeAsString]);
-		return NO;
-		
-	}
 	
 	pMain = (void*) ((unsigned long) pMain + 4);
 		
@@ -221,16 +197,13 @@ long convertToLittleEndianLong(long Val)
 			pMain = [self parsePoint:pMain];
 		
 		if((nShapefileType == kShapeTypePolyline) || (nShapefileType == kShapeTypePolygon))
-			pMain = [self parsePolyline:pMain];
+			pMain = [self parsePolyline:pMain forRecord:recordCount];
 		
 		if(nTotalContentLength == fileLength){
 			return YES;
 		}
-		
 	}
-	
 	return YES;
-	
 }
 
 -(NSArray*)objects {
@@ -259,8 +232,8 @@ long convertToLittleEndianLong(long Val)
 	return pMain;
 }
 
-
--(void *)parsePolyline:(void *)pMain{	
+-(void *)parsePolyline:(void *)pMain forRecord:(int)record
+{
 	long i;
 	long nNumParts;
 	long nNumPoints;
@@ -270,9 +243,7 @@ long convertToLittleEndianLong(long Val)
 	ShapePolyline *shapePolyline = [[ShapePolyline alloc] init];
 	[shapePolyline initMutableArray];
 	
-	for(i = 0; i <= 3; i++)
-	{
-		
+	for(i = 0; i <= 3; i++){
 		memcpy(&(shapePolyline->m_nBoundingBox[i]), pMain, 8);
 		pMain = (void*) ((unsigned long) pMain + 8);
 		
@@ -297,7 +268,6 @@ long convertToLittleEndianLong(long Val)
 	CLLocationCoordinate2D *pointsCArray = calloc(nNumPoints, sizeof(CLLocationCoordinate2D));
 
 	// read the elements
-	
 	for(NSInteger index = 0; index < nNumPoints; index++)
 	{
 		double north = 0, east = 0;
@@ -311,6 +281,8 @@ long convertToLittleEndianLong(long Val)
 
 	MKPolygon *polygon=[MKPolygon polygonWithCoordinates:pointsCArray 
 												   count:nNumPoints];
+    
+    polygon.title = [NSString stringWithFormat:@"%d",record];
 	
 	if (pointsCArray) {
 		free(pointsCArray);
