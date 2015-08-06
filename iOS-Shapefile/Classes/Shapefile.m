@@ -4,8 +4,6 @@
 #import "Shapefile.h"
 #import "ShapePolyline.h"
 
-#import "PointLong.h"
-
 @interface Shapefile ()
 -(void *)parsePolyline:(void *)pMain;
 -(void *)parsePoint:(void *)pMain;

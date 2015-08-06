@@ -18,7 +18,6 @@
 		2899E5220DE3E06400AC0155 /* TestObjCShapefileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* TestObjCShapefileViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* TestObjCShapefileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* TestObjCShapefileViewController.m */; };
-		37A3905C125A400A00DD86BC /* PointLong.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A39054125A400A00DD86BC /* PointLong.m */; };
 		37A3905D125A400A00DD86BC /* ShapePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A39056125A400A00DD86BC /* ShapePolyline.m */; };
 		37A3905E125A400A00DD86BC /* Shapefile.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A39058125A400A00DD86BC /* Shapefile.m */; };
 		37EC6E73125AA318009B360D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EC6E72125AA318009B360D /* CoreLocation.framework */; };
@@ -32,7 +31,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* TestObjCShapefileAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjCShapefileAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* TestObjCShapefileAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjCShapefileAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* TestObjCShapefile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestObjCShapefile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* TestObjCShapefile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TestObjCShapefile.app; path = "/Users/tomgarske/Development/iOS-Zip3-Mapkit/iOS-Shapefile/build/Debug-iphoneos/TestObjCShapefile.app"; sourceTree = "<absolute>"; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* TestObjCShapefileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestObjCShapefileViewController.xib; sourceTree = "<group>"; };
@@ -40,8 +39,6 @@
 		28D7ACF60DDB3853001CB0EB /* TestObjCShapefileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjCShapefileViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* TestObjCShapefileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjCShapefileViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		37A39053125A400A00DD86BC /* PointLong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointLong.h; path = Classes/PointLong.h; sourceTree = SOURCE_ROOT; };
-		37A39054125A400A00DD86BC /* PointLong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PointLong.m; path = Classes/PointLong.m; sourceTree = SOURCE_ROOT; };
 		37A39055125A400A00DD86BC /* ShapePolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShapePolyline.h; path = Classes/ShapePolyline.h; sourceTree = SOURCE_ROOT; };
 		37A39056125A400A00DD86BC /* ShapePolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShapePolyline.m; path = Classes/ShapePolyline.m; sourceTree = SOURCE_ROOT; };
 		37A39057125A400A00DD86BC /* Shapefile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shapefile.h; path = Classes/Shapefile.h; sourceTree = SOURCE_ROOT; };
@@ -70,8 +67,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				37A39053125A400A00DD86BC /* PointLong.h */,
-				37A39054125A400A00DD86BC /* PointLong.m */,
 				37A39055125A400A00DD86BC /* ShapePolyline.h */,
 				37A39056125A400A00DD86BC /* ShapePolyline.m */,
 				37A39057125A400A00DD86BC /* Shapefile.h */,
@@ -94,14 +89,6 @@
 			name = Zip3;
 			sourceTree = "<group>";
 		};
-		19C28FACFE9D520D11CA2CBB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1D6058910D05DD3D006BFB54 /* TestObjCShapefile.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +96,6 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -223,7 +209,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* TestObjCShapefileAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* TestObjCShapefileViewController.m in Sources */,
-				37A3905C125A400A00DD86BC /* PointLong.m in Sources */,
 				37A3905D125A400A00DD86BC /* ShapePolyline.m in Sources */,
 				37A3905E125A400A00DD86BC /* Shapefile.m in Sources */,
 			);
@@ -238,11 +223,13 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "TestObjCShapefile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
@@ -256,9 +243,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "TestObjCShapefile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
